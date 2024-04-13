@@ -35,15 +35,12 @@ fn recursive_find(path: &Path, delete: bool) -> Result<()> {
                 found_src = true;
             }
             directories.push(e.path())
-        } else {
-            if e.file_name() == "Cargo.toml" {
-                found_toml = true;
-                
-            }
+        } else if e.file_name() == "Cargo.toml" {
+            found_toml = true;
         }
 
         if target_dir.is_some() & found_toml & found_src {
-            break
+            break;
         }
     }
 
